@@ -1,0 +1,26 @@
+{
+  "mode": "built-in image generation",
+  "asset_sources": {
+    "01-identidade/logo-bloom-alpha.png": "exec-f99b3b20-8d4c-4e98-8848-2fa8c93883b9.png",
+    "02-direcao/direction-desktop.png": "exec-c387aa96-1835-44c4-a9da-093b9d10741f.png",
+    "02-direcao/direction-mobile.png": "exec-024c866f-a058-4c84-a167-b5ebf38226e0.png",
+    "03-hero/hero-latte-desktop.png": "exec-56fa9e89-db68-40cd-ab24-28c2a0cddd7d.png",
+    "03-hero/hero-latte-mobile.png": "exec-75b8ce59-4769-4bba-8c49-860326d2d102.png",
+    "03-hero/macro-bean.png": "exec-e7238404-5fce-4f37-a913-eb50e82d1031.png",
+    "04-secoes/food-morning.png": "exec-6b931da1-423c-4d16-ae70-a4c617b8a574.png",
+    "04-secoes/iced-latte.png": "exec-d4b923e8-23d4-408e-974b-f43955d6875c.png",
+    "04-secoes/facade-edited.png": "exec-2e727ee1-6355-4c29-8c74-300ada0b6ce5.png",
+    "05-camadas/cup-alpha.png": "exec-6708b29b-50d1-474a-acbe-eba0069f2dcf.png",
+    "05-camadas/bean-alpha.png": "exec-d82fb16f-fdf0-4fec-9139-d2e183dde1c4.png"
+  },
+  "prompts_summary": {
+    "logo": "Faithful rounded bloom signature inspired by profile screenshot, burgundy, ESPRESSO descriptor, genuine transparent PNG.",
+    "hero": "Navy latte cup and oak plinth, warm oat/blue backdrop, white steamed milk pour, natural morning light.",
+    "macro": "Single roasted bean tactile macro, central groove.",
+    "alpha": "Isolated cup/saucer and isolated bean, genuine alpha.",
+    "food": "Conceptual ham/Swiss croissant with banana bread, oak and blue linen.",
+    "iced": "Condensation and real ice, milk/espresso layers, burgundy coaster.",
+    "facade": "Remove only gallery UI from supplied real photo, preserve facade; verify against source.",
+    "layouts": "Desktop/mobile editorial coffee UX, menu diagrams, food and real-location guidance."
+  }
+}

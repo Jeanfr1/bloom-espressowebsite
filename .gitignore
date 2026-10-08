@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vercel/
+.DS_Store
+.claude/
+
+# Kit references: third-party screenshots (reviews, menu, inspiration).
+# Kept on disk for the team, never published.
+00-referencias/

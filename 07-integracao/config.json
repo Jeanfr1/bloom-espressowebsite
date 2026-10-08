@@ -1,0 +1,30 @@
+{
+  "business_name": "Bloom Espresso",
+  "concept": "Morning, in bloom.",
+  "website_href": "https://www.bloomespresso.com.au/",
+  "menu_href": "https://www.bloomespresso.com.au/",
+  "menu_route_status": "Official website provided; exact deep menu/order URL not retrieved",
+  "email_href": "mailto:coffee@bloomespresso.com.au",
+  "address": "49 French Street, Pimlico QLD 4812, Australia",
+  "directions_href": "https://www.google.com/maps/search/?api=1&query=49%20French%20Street%20Pimlico%20QLD%204812",
+  "hours_from_attachment": {
+    "Mon-Fri": "06:00–12:00",
+    "Sat-Sun": "07:00–12:00"
+  },
+  "source": "user-supplied screenshots",
+  "reconfirm_before_publication": [
+    "hours",
+    "menu/prices",
+    "stock",
+    "Bear Bones supplier",
+    "exact checkout route"
+  ],
+  "palette": {
+    "oat": "#F4EBDC",
+    "burgundy": "#51211F",
+    "blue": "#B8D5E5",
+    "espresso": "#2B1813",
+    "caramel": "#C78345",
+    "navy": "#173548"
+  }
+}

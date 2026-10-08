@@ -1,0 +1,128 @@
+[
+  {
+    "file": "01-identidade/identity-board.png",
+    "size": [
+      1800,
+      1050
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "01-identidade/logo-bloom-alpha.png",
+    "size": [
+      1774,
+      887
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "02-direcao/direction-desktop.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "02-direcao/direction-mobile.png",
+    "size": [
+      821,
+      1916
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "02-direcao/storyboard.png",
+    "size": [
+      1800,
+      1230
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "03-hero/hero-latte-desktop.png",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "03-hero/hero-latte-mobile.png",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "03-hero/macro-bean.png",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "04-secoes/facade-edited.png",
+    "size": [
+      1116,
+      1410
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "04-secoes/food-morning.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "04-secoes/iced-latte.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "alpha_range": null
+  },
+  {
+    "file": "05-camadas/bean-alpha.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      254
+    ]
+  },
+  {
+    "file": "05-camadas/cup-alpha.png",
+    "size": [
+      1416,
+      1111
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ]
+  }
+]

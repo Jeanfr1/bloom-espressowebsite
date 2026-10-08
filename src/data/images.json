@@ -1,0 +1,298 @@
+{
+  "hero": {
+    "width": 1672,
+    "height": 941,
+    "avif": [
+      [
+        "/img/hero-800-v1.avif",
+        800
+      ],
+      [
+        "/img/hero-1200-v1.avif",
+        1200
+      ],
+      [
+        "/img/hero-1672-v1.avif",
+        1672
+      ]
+    ],
+    "webp": [
+      [
+        "/img/hero-800-v1.webp",
+        800
+      ],
+      [
+        "/img/hero-1200-v1.webp",
+        1200
+      ],
+      [
+        "/img/hero-1672-v1.webp",
+        1672
+      ]
+    ]
+  },
+  "heroM": {
+    "width": 941,
+    "height": 1672,
+    "avif": [
+      [
+        "/img/hero-m-640-v1.avif",
+        640
+      ],
+      [
+        "/img/hero-m-941-v1.avif",
+        941
+      ]
+    ],
+    "webp": [
+      [
+        "/img/hero-m-640-v1.webp",
+        640
+      ],
+      [
+        "/img/hero-m-941-v1.webp",
+        941
+      ]
+    ]
+  },
+  "macro": {
+    "width": 1672,
+    "height": 941,
+    "avif": [
+      [
+        "/img/macro-800-v1.avif",
+        800
+      ],
+      [
+        "/img/macro-1200-v1.avif",
+        1200
+      ],
+      [
+        "/img/macro-1672-v1.avif",
+        1672
+      ]
+    ],
+    "webp": [
+      [
+        "/img/macro-800-v1.webp",
+        800
+      ],
+      [
+        "/img/macro-1200-v1.webp",
+        1200
+      ],
+      [
+        "/img/macro-1672-v1.webp",
+        1672
+      ]
+    ]
+  },
+  "bean": {
+    "width": 1536,
+    "height": 1024,
+    "avif": [
+      [
+        "/img/bean-768-v1.avif",
+        768
+      ],
+      [
+        "/img/bean-1152-v1.avif",
+        1152
+      ],
+      [
+        "/img/bean-1536-v1.avif",
+        1536
+      ]
+    ],
+    "webp": [
+      [
+        "/img/bean-768-v1.webp",
+        768
+      ],
+      [
+        "/img/bean-1152-v1.webp",
+        1152
+      ],
+      [
+        "/img/bean-1536-v1.webp",
+        1536
+      ]
+    ]
+  },
+  "cup": {
+    "width": 1416,
+    "height": 1111,
+    "avif": [
+      [
+        "/img/cup-600-v1.avif",
+        600
+      ],
+      [
+        "/img/cup-1000-v1.avif",
+        1000
+      ],
+      [
+        "/img/cup-1416-v1.avif",
+        1416
+      ]
+    ],
+    "webp": [
+      [
+        "/img/cup-600-v1.webp",
+        600
+      ],
+      [
+        "/img/cup-1000-v1.webp",
+        1000
+      ],
+      [
+        "/img/cup-1416-v1.webp",
+        1416
+      ]
+    ]
+  },
+  "food": {
+    "width": 1536,
+    "height": 1024,
+    "avif": [
+      [
+        "/img/food-700-v1.avif",
+        700
+      ],
+      [
+        "/img/food-1100-v1.avif",
+        1100
+      ],
+      [
+        "/img/food-1536-v1.avif",
+        1536
+      ]
+    ],
+    "webp": [
+      [
+        "/img/food-700-v1.webp",
+        700
+      ],
+      [
+        "/img/food-1100-v1.webp",
+        1100
+      ],
+      [
+        "/img/food-1536-v1.webp",
+        1536
+      ]
+    ]
+  },
+  "iced": {
+    "width": 1536,
+    "height": 1024,
+    "avif": [
+      [
+        "/img/iced-700-v1.avif",
+        700
+      ],
+      [
+        "/img/iced-1100-v1.avif",
+        1100
+      ],
+      [
+        "/img/iced-1536-v1.avif",
+        1536
+      ]
+    ],
+    "webp": [
+      [
+        "/img/iced-700-v1.webp",
+        700
+      ],
+      [
+        "/img/iced-1100-v1.webp",
+        1100
+      ],
+      [
+        "/img/iced-1536-v1.webp",
+        1536
+      ]
+    ]
+  },
+  "facade": {
+    "width": 1116,
+    "height": 1410,
+    "avif": [
+      [
+        "/img/facade-560-v1.avif",
+        560
+      ],
+      [
+        "/img/facade-840-v1.avif",
+        840
+      ],
+      [
+        "/img/facade-1116-v1.avif",
+        1116
+      ]
+    ],
+    "webp": [
+      [
+        "/img/facade-560-v1.webp",
+        560
+      ],
+      [
+        "/img/facade-840-v1.webp",
+        840
+      ],
+      [
+        "/img/facade-1116-v1.webp",
+        1116
+      ]
+    ]
+  },
+  "facadeOriginal": {
+    "width": 816,
+    "height": 902,
+    "avif": [
+      [
+        "/img/facade-original-400-v1.avif",
+        400
+      ],
+      [
+        "/img/facade-original-816-v1.avif",
+        816
+      ]
+    ],
+    "webp": [
+      [
+        "/img/facade-original-400-v1.webp",
+        400
+      ],
+      [
+        "/img/facade-original-816-v1.webp",
+        816
+      ]
+    ]
+  },
+  "logo": {
+    "width": 1194,
+    "height": 510,
+    "png": [
+      [
+        "/img/logo-bloom-300-v1.png",
+        300
+      ],
+      [
+        "/img/logo-bloom-600-v1.png",
+        600
+      ]
+    ],
+    "webp": [
+      [
+        "/img/logo-bloom-300-v1.webp",
+        300
+      ],
+      [
+        "/img/logo-bloom-600-v1.webp",
+        600
+      ]
+    ]
+  }
+}

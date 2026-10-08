@@ -1,0 +1,124 @@
+/* ============ Hero: bean → aperture → cup → drink layers ============
+   Default (no JS, reduced motion, short screens) = static photo hero.
+   hero.js sets data-mode="full" (220svh) or "compact" (145svh) and owns
+   every hidden or moving state from then on. */
+
+.hero { position: relative; background: var(--oat-2); }
+.hero__track { position: relative; }
+.hero__stage { position: relative; height: 100svh; min-height: 540px; overflow: hidden; isolation: isolate; }
+.hero[data-mode='full'] .hero__track { height: 220svh; overflow-x: clip; }
+.hero[data-mode='compact'] .hero__track { height: 145svh; overflow-x: clip; }
+.hero[data-mode='full'] .hero__stage,
+.hero[data-mode='compact'] .hero__stage { position: sticky; top: 0; min-height: 0; }
+
+/* Worlds */
+.hw { position: absolute; inset: 0; overflow: hidden; }
+.hw--dark { background: #1C0E09; }
+.hw--blue { background: var(--blue); }
+.hw--photo { background: var(--oat-2); }
+.hw--espresso { z-index: 3; background: var(--espresso); visibility: hidden; }
+.hw__shade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(20, 10, 6, .62) 0%, rgba(20, 10, 6, .28) 46%, rgba(20, 10, 6, 0) 70%);
+}
+
+/* Plates: cover by CSS until hero.js sizes them in image pixels. */
+.plate { position: absolute; inset: 0; }
+.plate picture, .plate__img { width: 100%; height: 100%; }
+.plate__img { object-fit: cover; object-position: var(--obj, 50% 50%); user-select: none; -webkit-user-drag: none; }
+[data-plate='macro'] { --obj: 72% 50%; }
+[data-plate='bean'] { --obj: 50% 50%; }
+[data-plate='photo'] { --obj: 78% 50%; }
+.hero.is-js .plate { inset: auto; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.hero.is-js .plate picture, .hero.is-js .plate__img { width: 100%; height: 100%; max-width: none; object-fit: fill; }
+.hero.is-js [data-plate='bean'] .plate__img { object-fit: contain; }
+.hero:not(.is-js) [data-plate='bean'] { display: none; }
+
+.groove { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; display: none; }
+.hero[data-mode] .groove { display: block; }
+.groove__line { fill: none; stroke: #F6CF93; stroke-width: 2.6; stroke-linecap: round; }
+.groove__glow { fill: none; stroke: #E9A458; stroke-width: 14; stroke-linecap: round; opacity: .45; filter: blur(6px); }
+.groove__spark { mix-blend-mode: screen; }
+
+/* Apertures: rotated elliptical windows (hero.js sets geometry). */
+.ap { position: absolute; inset: 0; z-index: 2; }
+.ap__in { position: absolute; inset: 0; }
+.ap .ap { z-index: 1; }
+
+/* Copy, three aligned layers: light (on the dark bean), dark (real text,
+   inside the aperture), and the CTA layer (real links). */
+.hc {
+  position: absolute; z-index: 2;
+  left: var(--gx); right: var(--gx);
+  top: calc(var(--nav-top) + var(--nav-h) + clamp(22px, 6svh, 56px));
+  pointer-events: none;
+}
+.hc__eyebrow { font: 600 12px/1.2 var(--sans); letter-spacing: .26em; text-transform: uppercase; }
+.hc__title {
+  margin: 16px 0 18px;
+  font-family: var(--serif);
+  font-weight: 650;
+  font-variation-settings: 'opsz' 144;
+  font-size: clamp(54px, 15.5vw, 76px);
+  line-height: .9;
+  letter-spacing: -.038em;
+  padding-top: .06em;
+}
+.hc__title em { font-style: italic; font-weight: 600; letter-spacing: -.02em; }
+.hc__lede { max-width: 27ch; font-size: 17px; line-height: 1.5; }
+.hc__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+.hc--light { color: var(--oat); }
+.hc--light .hc__eyebrow, .hc--light .hc__title em { color: var(--blue); }
+.hc--light .hc__lede { color: #F1E6D6; }
+.hc--dark { color: var(--espresso); }
+.hc--dark .hc__eyebrow { color: var(--navy); }
+.hc--dark .hc__title em { color: var(--burgundy); }
+.hc--dark .hc__lede { color: #3D261E; }
+.hc--light .hc__ctas, .hc--dark .hc__ctas { visibility: hidden; }
+.hc--ctas { z-index: 4; }
+.hc--ctas > :not(.hc__ctas) { visibility: hidden; }
+.hc--ctas .btn { pointer-events: auto; }
+.hero:not([data-mode]) .hc--light { display: none; }
+
+/* Scroll cue (film modes only) */
+.hero__cue {
+  position: absolute; z-index: 4; left: 50%; bottom: max(22px, env(safe-area-inset-bottom, 0px));
+  display: none; align-items: center; gap: 10px; transform: translateX(-50%);
+  font: 600 11px/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--oat);
+  pointer-events: none;
+}
+.hero__cue::after { content: ''; width: 1px; height: 34px; background: currentColor; transform-origin: top; animation: cue 1.8s var(--ease-io) infinite; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.hero[data-mode] .hero__cue { display: flex; flex-direction: column; }
+
+/* Dock: drink diagrams travelling into #coffee (full mode only). */
+.dock { position: fixed; inset: 0; z-index: 6; pointer-events: none; visibility: hidden; }
+.dock__item { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform, opacity; }
+.dock__item svg { width: 100%; height: auto; max-width: none; overflow: visible; }
+.dock .dg-layer { transition: none; transform: translateY(calc(var(--i) * var(--sep, 0) * -14px)); }
+
+/* ---------- Desktop / landscape layout ---------- */
+@media (min-width: 1024px) and (min-aspect-ratio: 5/4) {
+  .hc {
+    top: 0; bottom: 0; right: auto;
+    width: min(46vw, 680px);
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: calc(var(--nav-top) + var(--nav-h) * .6);
+  }
+  .hc__title { font-size: clamp(88px, 9.4vw, 152px); margin: 20px 0 24px; }
+  .hc__lede { font-size: clamp(17px, 1.35vw, 20px); max-width: 30ch; }
+  .hc__ctas { margin-top: 32px; }
+  .hw__shade { background: linear-gradient(90deg, rgba(20, 10, 6, .55) 0%, rgba(20, 10, 6, .25) 40%, rgba(20, 10, 6, 0) 62%); }
+  [data-plate='photo'] { --obj: 82% 50%; }
+}
+/* 4:3 to 3:2 screens: the cup sits closer, so the copy column narrows. */
+@media (min-width: 1024px) and (min-aspect-ratio: 5/4) and (max-aspect-ratio: 3/2) {
+  .hc { width: 38vw; }
+  .hc__title { font-size: clamp(72px, 7.8vw, 128px); }
+  .hc__lede { max-width: 25ch; }
+}
+@media (min-width: 640px) and (max-width: 1023px) and (min-aspect-ratio: 1/1) {
+  .hc { right: auto; width: min(60vw, 560px); }
+  [data-plate='photo'] { --obj: 82% 50%; }
+}

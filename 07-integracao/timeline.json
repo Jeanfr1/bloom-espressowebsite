@@ -1,0 +1,33 @@
+{
+  "desktop_scroll_svh": 220,
+  "mobile_scroll_svh": 145,
+  "phases": [
+    [
+      0,
+      0.18,
+      "bean"
+    ],
+    [
+      0.18,
+      0.4,
+      "aperture"
+    ],
+    [
+      0.4,
+      0.6,
+      "cup"
+    ],
+    [
+      0.6,
+      0.84,
+      "menu_layers"
+    ],
+    [
+      0.84,
+      1,
+      "handoff"
+    ]
+  ],
+  "reduced_motion": "static",
+  "physical_liquid_simulation": false
+}

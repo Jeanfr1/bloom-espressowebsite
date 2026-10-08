@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bloom Espresso · Morning, in bloom. · Pimlico, Townsville</title>
+  <meta name="description" content="A small espresso bar in Pimlico, Townsville. Coffee, a little something to eat, and a good start to the day.">
+  <!-- TODO(bloom): remove noindex and add canonical/og:url once the final domain is set. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4EBDC">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bloom Espresso · Morning, in bloom.">
+  <meta property="og:description" content="A small espresso bar in Pimlico, Townsville. Coffee, a little something to eat, and a good start to the day.">
+  <meta property="og:image" content="/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" type="image/avif" imagesrcset="/img/macro-800-v1.avif 800w, /img/macro-1200-v1.avif 1200w, /img/macro-1672-v1.avif 1672w" imagesizes="max(100vw, 177.7svh)">
+  <link rel="preload" href="/src/fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <!--@jsonld-->
+  <link rel="stylesheet" href="/src/css/main.css">
+  <script type="module" src="/src/js/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <div class="nav__bar">
+      <a class="nav__brand" href="#top" aria-label="Bloom Espresso, back to top">
+        <img src="/img/logo-bloom-300-v1.png" srcset="/img/logo-bloom-300-v1.png 300w, /img/logo-bloom-600-v1.png 600w" sizes="132px" width="1194" height="510" alt="Bloom Espresso">
+      </a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#coffee">Coffee</a>
+        <a href="#menu">Menu</a>
+        <a href="#corner">Our corner</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--quiet nav__dir" href="{{directionsHref}}" target="_blank" rel="noopener noreferrer">Get directions</a>
+        <a class="btn btn--primary" href="{{menuHref}}" target="_blank" rel="noopener noreferrer"><span class="nav__cta-long">View current menu</span><span class="nav__cta-short">View menu</span><svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Open navigation" data-nav-toggle>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav__sheet" id="nav-sheet" data-nav-sheet>
+      <a href="#coffee">Coffee</a>
+      <a href="#menu">Menu</a>
+      <a href="#corner">Our corner</a>
+      <a href="{{directionsHref}}" target="_blank" rel="noopener noreferrer">Get directions</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 01 · Hero: bean → aperture → cup → drink layers (220svh desktop, 145svh compact) -->
+    <section class="hero" id="top" aria-labelledby="hero-title" data-hero>
+      <div class="hero__track" data-track>
+        <div class="hero__stage" data-stage>
+          <div class="hw hw--dark" aria-hidden="true" data-world="dark">
+            <div class="plate" data-plate="macro">
+              <x-pic img="macro" sizes="max(100vw, 177.7svh)" alt="" class="plate__img" loading="eager" fetchpriority="high"></x-pic>
+              <svg class="groove" viewBox="0 0 1672 941" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <defs>
+                  <radialGradient id="spark" r=".5"><stop offset="0" stop-color="#FFE9C2"/><stop offset=".35" stop-color="#F2B66A" stop-opacity=".85"/><stop offset="1" stop-color="#C78345" stop-opacity="0"/></radialGradient>
+                </defs>
+                <path class="groove__glow" data-groove d=""/>
+                <path class="groove__line" data-groove d=""/>
+                <circle class="groove__spark" r="46" fill="url(#spark)" data-spark/>
+              </svg>
+            </div>
+            <div class="hw__shade"></div>
+          </div>
+
+          <div class="hc hc--light" aria-hidden="true">
+            <p class="hc__eyebrow">Pimlico · Townsville</p>
+            <p class="hc__title">Morning,<br>in <em>bloom.</em></p>
+            <p class="hc__lede">A small espresso bar in Pimlico, Townsville. Coffee, a little something to eat, and a good start to the day.</p>
+            <div class="hc__ctas"><span class="btn btn--primary">View current menu</span><span class="btn btn--light">Get directions</span></div>
+          </div>
+
+          <div class="ap" data-aperture="1">
+            <div class="ap__in">
+              <div class="hw hw--blue" aria-hidden="true" data-world="blue">
+                <div class="plate" data-plate="bean">
+                  <x-pic img="bean" only="(min-width: 1024px) and (min-aspect-ratio: 5/4)" sizes="72vw" alt="" class="plate__img" loading="eager"></x-pic>
+                </div>
+              </div>
+              <div class="ap" data-aperture="2">
+                <div class="ap__in">
+                  <div class="hw hw--photo" data-world="photo">
+                    <div class="plate" data-plate="photo">
+                      <x-pic img="hero" m="heroM" mmedia="(max-aspect-ratio: 1/1)" sizes="max(100vw, 177.7svh)" msizes="max(100vw, 56.3svh)" alt="Milk being poured into a latte with leaf art, in a navy cup on an oak block. Conceptual campaign photo." class="plate__img" loading="eager"></x-pic>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hc hc--dark">
+                <p class="hc__eyebrow">Pimlico · Townsville</p>
+                <h1 class="hc__title" id="hero-title">Morning,<br>in <em>bloom.</em></h1>
+                <p class="hc__lede">A small espresso bar in Pimlico, Townsville. Coffee, a little something to eat, and a good start to the day.</p>
+                <div class="hc__ctas" aria-hidden="true"><span class="btn btn--primary">View current menu</span><span class="btn btn--light">Get directions</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hw hw--espresso" aria-hidden="true" data-world="espresso"></div>
+          <p class="hero__cue" aria-hidden="true">Scroll</p>
+
+          <div class="hc hc--ctas" data-hero-ctas>
+            <p class="hc__eyebrow" aria-hidden="true">Pimlico · Townsville</p>
+            <p class="hc__title" aria-hidden="true">Morning,<br>in <em>bloom.</em></p>
+            <p class="hc__lede" aria-hidden="true">A small espresso bar in Pimlico, Townsville. Coffee, a little something to eat, and a good start to the day.</p>
+            <div class="hc__ctas">
+              <a class="btn btn--primary" href="{{menuHref}}" target="_blank" rel="noopener noreferrer">View current menu<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+              <a class="btn btn--light" href="{{directionsHref}}" target="_blank" rel="noopener noreferrer">Get directions<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s5.5-5.2 5.5-9.3A5.5 5.5 0 0 0 4.5 8.7C4.5 12.8 10 18 10 18Z"/><circle cx="10" cy="8.6" r="1.9"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dock" aria-hidden="true" data-dock></div>
+    </section>
+
+    <!-- 02 · Coffee: the drink diagrams dock here from the hero -->
+    <section class="coffee band band--espresso" id="coffee" aria-labelledby="coffee-title" data-coffee>
+      <div class="wrap coffee__grid">
+        <ul class="drinks" role="list" data-drinks><!--@drinks--></ul>
+        <header class="coffee__head">
+          <p class="eyebrow">Coffee</p>
+          <h2 class="h2" id="coffee-title">Small bar.<br>Full flavour.</h2>
+        </header>
+        <div class="coffee__body">
+          <p class="lead">Your morning coffee, made part of the neighbourhood.</p>
+          <p>Espresso, milk coffee and iced favourites. Explore the menu to find your next cup.</p>
+          <p class="supplier"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="6.5" ry="9" transform="rotate(30 12 12)"/><path d="M9.2 5.6c2.6 3.4.4 8 3.2 12.8"/></svg>{{supplier}}</p>
+          <p class="drinks__note" id="drinks-note">Tap a drink to see its layers. Illustrative diagrams of common ingredients, not Bloom's exact recipes or proportions.</p>
+          <p class="drinks__live" aria-live="polite" data-drinks-live></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · The menu -->
+    <section class="menu band band--espresso" id="menu" aria-labelledby="menu-title">
+      <div class="wrap menu__grid">
+        <figure class="menu__photo" data-reveal="mask">
+          <x-pic img="iced" sizes="(min-width: 960px) 46vw, 100vw" alt="An iced latte with espresso swirling into milk over ice, on a burgundy coaster. Conceptual campaign photo."></x-pic>
+        </figure>
+        <div class="menu__text">
+          <p class="eyebrow">The menu</p>
+          <h2 class="h2" id="menu-title">Find your morning.</h2>
+          <ul class="menu__cats" role="list" aria-label="Menu categories"><!--@categories--></ul>
+          <h3 class="menu__label">On the coffee list</h3>
+          <ul class="menu__names" role="list"><!--@featured--></ul>
+          <a class="btn btn--light btn--lg" href="{{menuHref}}" target="_blank" rel="noopener noreferrer">View current menu on Bloom's website<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+          <p class="fineprint">Prices, availability and ordering are on Bloom's website.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Food -->
+    <section class="food band band--oat" id="food" aria-labelledby="food-title">
+      <div class="wrap food__grid">
+        <div class="food__text">
+          <p class="eyebrow">Food</p>
+          <h2 class="h2" id="food-title">Something good<br>on the side.</h2>
+          <p class="lead">From a croissant to banana bread, explore the food menu and what's available today.</p>
+          <ul class="food__names" role="list" aria-label="Food on the menu"><!--@food--></ul>
+          <p class="fineprint">Use the live menu for current availability, prices, ingredients and dietary information. Campaign photos are conceptual.</p>
+          <a class="link" href="{{menuHref}}" target="_blank" rel="noopener noreferrer">Explore the food menu<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        </div>
+        <figure class="food__photo" data-reveal="mask">
+          <x-pic img="food" sizes="(min-width: 960px) 54vw, 100vw" alt="A toasted ham and Swiss croissant on a navy plate, with buttered banana bread behind. Conceptual campaign photo."></x-pic>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 05 · Retail and gifting -->
+    <section class="retail band band--espresso" id="retail" aria-labelledby="retail-title">
+      <div class="retail__beans" aria-hidden="true" data-beans><!--@beans--></div>
+      <div class="wrap retail__wrap">
+        <div class="retail__card" data-reveal>
+          <p class="eyebrow">Retail and gifting</p>
+          <h2 class="h2" id="retail-title">Bring a little<br>Bloom home.</h2>
+          <p class="lead">Explore the retail selection and gift cards through the current menu.</p>
+          <a class="btn btn--primary" href="{{menuHref}}" target="_blank" rel="noopener noreferrer">Retail and gift cards<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Our corner -->
+    <section class="corner band band--blue" id="corner" aria-labelledby="corner-title">
+      <div class="wrap corner__grid">
+        <div class="corner__text">
+          <p class="eyebrow">Our corner</p>
+          <h2 class="h2" id="corner-title">Our corner<br>of Pimlico.</h2>
+          <p class="address"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s5.5-5.2 5.5-9.3A5.5 5.5 0 0 0 4.5 8.7C4.5 12.8 10 18 10 18Z"/><circle cx="10" cy="8.6" r="1.9"/></svg><span>{{addressFull}}</span></p>
+          <p class="lead">A small local espresso bar, with space to pause or take your coffee along.</p>
+          <a class="btn btn--primary" href="{{directionsHref}}" target="_blank" rel="noopener noreferrer">Get directions<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+        </div>
+        <figure class="corner__photo" data-reveal="fade">
+          <x-pic img="facade" sizes="(min-width: 960px) 42vw, 100vw" alt="The Bloom Espresso shopfront on French Street: a grey sign reading Bloom Espresso, white tables and stools under the awning, and a white picket fence."></x-pic>
+          <figcaption class="corner__caption">
+            <span>Edited from Bloom's own photo to remove an app overlay.</span>
+            <span class="corner__original">
+              <x-pic img="facadeOriginal" sizes="96px" alt="The original, unedited photo of the shopfront." pclass="corner__thumb"></x-pic>
+              <span>Original photo</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 07 · Visit -->
+    <section class="visit band band--burgundy" id="visit" aria-labelledby="visit-title" data-visit>
+      <div class="wrap visit__grid">
+        <div class="visit__text">
+          <p class="eyebrow">Visit</p>
+          <h2 class="h2" id="visit-title">See you<br>in the morning.</h2>
+          <dl class="hours"><!--@hours--></dl>
+          <p class="fineprint">Hours from Bloom's website. Seasonal and holiday hours can change.</p>
+          <ul class="contact" role="list">
+            <li><a class="link" href="mailto:{{email}}">{{email}}</a></li>
+            <li><a class="link" href="{{website}}" target="_blank" rel="noopener noreferrer">bloomespresso.com.au</a></li>
+          </ul>
+          <div class="visit__ctas">
+            <a class="btn btn--light" href="{{menuHref}}" target="_blank" rel="noopener noreferrer">View current menu</a>
+            <a class="btn btn--blue" href="{{directionsHref}}" target="_blank" rel="noopener noreferrer" data-flow-end>Get directions<svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+          </div>
+        </div>
+        <div class="visit__art" aria-hidden="true">
+          <div class="visit__sun"></div>
+          <x-pic img="cup" sizes="(min-width: 960px) 36vw, 80vw" alt="" class="visit__cup"></x-pic>
+        </div>
+      </div>
+      <svg class="flow" aria-hidden="true" focusable="false" data-flow><path data-flow-path d=""/></svg>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <a class="footer__brand" href="#top" aria-label="Bloom Espresso, back to top">
+        <img src="/img/logo-bloom-300-v1.png" srcset="/img/logo-bloom-300-v1.png 300w, /img/logo-bloom-600-v1.png 600w" sizes="150px" width="1194" height="510" alt="Bloom Espresso" loading="lazy">
+      </a>
+      <p class="footer__place">Bloom Espresso · Pimlico, Townsville</p>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="{{menuHref}}" target="_blank" rel="noopener noreferrer">Menu</a>
+        <a href="{{directionsHref}}" target="_blank" rel="noopener noreferrer">Directions</a>
+        <a href="mailto:{{email}}">Email</a>
+      </nav>
+      <p class="footer__note">Campaign photography is conceptual and may not show exact menu items. Menu, prices and availability are on Bloom's website.</p>
+    </div>
+  </footer>
+</body>
+</html>
