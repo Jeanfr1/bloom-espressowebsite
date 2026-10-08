@@ -44,6 +44,7 @@
   --nav-h: 64px;
   --nav-top: 12px;
   --radius: 22px;
+  --focus: var(--burgundy);      /* 11:1 on oat, 8.6:1 on blue */
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
@@ -68,7 +69,7 @@ a { color: inherit; }
 button { font: inherit; color: inherit; }
 h1, h2, h3, p, ul, dl, dd, figure { margin: 0; padding: 0; }
 ul { list-style: none; }
-:focus-visible { outline: 3px solid var(--caramel); outline-offset: 4px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
 ::selection { background: var(--blue); color: var(--espresso); }
 
 .skip {
@@ -208,13 +209,13 @@ ul { list-style: none; }
 /* ============ Bands ============ */
 .band { position: relative; padding-block: clamp(88px, 11vw, 168px); }
 .band--oat { background: var(--oat); color: var(--ink); }
-.band--espresso { background: var(--espresso); color: var(--on-dark); }
+.band--espresso { --focus: var(--blue); background: var(--espresso); color: var(--on-dark); }
 .band--espresso .eyebrow { color: var(--blue); }
 .band--espresso .fineprint { color: var(--on-dark-soft); }
 .band--blue { background: var(--blue); color: var(--ink); }
 .band--blue .eyebrow { color: var(--navy); }
 .band--blue .fineprint { color: #3E2A24; }
-.band--burgundy { background: var(--burgundy); color: var(--oat); }
+.band--burgundy { --focus: var(--blue); background: var(--burgundy); color: var(--oat); }
 .band--burgundy .eyebrow { color: var(--blue); }
 .band--burgundy .fineprint { color: #E3D3C6; }
 

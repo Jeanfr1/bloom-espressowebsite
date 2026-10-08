@@ -122,3 +122,7 @@
   .hc { right: auto; width: min(60vw, 560px); }
   [data-plate='photo'] { --obj: 82% 50%; }
 }
+
+/* Hero CTAs sit on a dark bean and then a light photo: burgundy ring with an
+   oat halo on both sides reads on either. */
+.hero .btn:focus-visible { outline: 3px solid var(--burgundy); outline-offset: 3px; box-shadow: 0 0 0 3px var(--oat), 0 0 0 9px var(--oat); }

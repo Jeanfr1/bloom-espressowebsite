@@ -224,7 +224,8 @@ export function initHero() {
     if (t >= 1) return { rx: Infinity, k: 1 };
     if (t < 0.32) { const u = easeOut(t / 0.32); return { rx: slit * u, k: lerp(0.02, 0.16, u) }; }
     const u = easeIO((t - 0.32) / 0.68);
-    return { rx: lerp(slit, max, u), k: lerp(0.16, 1, Math.min(1, u * 1.6)) };
+    // full coverage a little before t = 1, so no corner lingers in the old world
+    return { rx: lerp(slit, max, Math.min(1, u / 0.86)), k: lerp(0.16, 1, Math.min(1, u * 1.6)) };
   }
 
   function draw(p) {
