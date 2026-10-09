@@ -17,10 +17,12 @@ export const site = {
     full: '49 French Street, Pimlico QLD 4812, Australia',
   },
   email: 'coffee@bloomespresso.com.au',
+  // bloomespresso.com.au answered 404 at its host on 2026-10-09 (home page and
+  // every Square Online path), so no button links to it: "View current menu"
+  // scrolls to #menu and price/gift-card questions go to the email.
+  // TODO(bloom): when the official site or its order page is back and tested,
+  // point the #menu buttons and the mailto CTAs in index.html at it again.
   website: 'https://www.bloomespresso.com.au/',
-  // Official site only: the exact menu/order deep link was not retrieved,
-  // so no checkout route is invented.
-  menuHref: 'https://www.bloomespresso.com.au/',
   // Address search. TODO(bloom): swap for the Google Maps place link (cid).
   directionsHref:
     'https://www.google.com/maps/search/?api=1&query=49%20French%20Street%20Pimlico%20QLD%204812',

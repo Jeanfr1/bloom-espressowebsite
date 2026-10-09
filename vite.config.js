@@ -92,7 +92,6 @@ const jsonLd = () =>
     '@context': 'https://schema.org',
     '@type': 'CafeOrCoffeeShop',
     name: site.name,
-    url: site.website,
     email: site.email,
     image: '/og.jpg',
     address: {
@@ -109,8 +108,6 @@ const jsonLd = () =>
 const TOKENS = {
   name: site.name,
   email: site.email,
-  website: site.website,
-  menuHref: site.menuHref,
   directionsHref: site.directionsHref,
   addressFull: site.address.full,
   addressShort: `${site.address.street}, ${site.address.locality}`,

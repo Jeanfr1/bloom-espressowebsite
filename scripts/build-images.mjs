@@ -16,7 +16,6 @@ await mkdir(OUT, { recursive: true });
 const SOURCES = {
   hero: { src: '03-hero/hero-latte-desktop.png', widths: [800, 1200, 1672] },
   heroM: { src: '03-hero/hero-latte-mobile.png', widths: [640, 941] },
-  macro: { src: '03-hero/macro-bean.png', widths: [800, 1200, 1672] },
   bean: { src: '05-camadas/bean-alpha.png', widths: [768, 1152, 1536], alpha: true },
   cup: { src: '05-camadas/cup-alpha.png', widths: [600, 1000, 1416], alpha: true },
   food: { src: '04-secoes/food-morning.png', widths: [700, 1100, 1536] },

@@ -1,10 +1,11 @@
-// Hero film: bean → aperture → cup → drink diagrams docking into #coffee.
+// Hero film: cut-out bean → light along the crease → aperture → cup →
+// espresso → drink diagrams docking into #coffee.
 // Scroll-scrubbed and reversible. Static photo hero (the HTML default) for
 // reduced motion and short screens; JS owns every hidden/moving state.
 //
 // Capture flags: ?nosmooth (no lerp), ?p=0.5 (freeze progress).
 // Rendered state: data-progress on the stage.
-import { MACRO, BEAN, PHOTO } from '../data/geometry.js';
+import { BEAN, PHOTO } from '../data/geometry.js';
 import { FULL, COMPACT } from '../data/timeline.js';
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -72,11 +73,11 @@ export function initHero() {
   const q = (s) => hero.querySelector(s);
   const stage = q('[data-stage]');
   const track = q('[data-track]');
-  const world = { dark: q('[data-world="dark"]'), blue: q('[data-world="blue"]'), photo: q('[data-world="photo"]'), espresso: q('[data-world="espresso"]') };
-  const plate = { macro: q('[data-plate="macro"]'), bean: q('[data-plate="bean"]'), photo: q('[data-plate="photo"]') };
-  const ap1 = q('[data-aperture="1"]'), ap2 = q('[data-aperture="2"]');
-  const ap1In = ap1.firstElementChild, ap2In = ap2.firstElementChild;
-  const copies = [...hero.querySelectorAll('.hc')];
+  const world = { blue: q('[data-world="blue"]'), photo: q('[data-world="photo"]'), espresso: q('[data-world="espresso"]') };
+  const plate = { bean: q('[data-plate="bean"]'), photo: q('[data-plate="photo"]') };
+  const ap = q('[data-aperture]');
+  const apIn = ap.firstElementChild;
+  const copy = q('[data-hero-copy]');
   const ctas = q('[data-hero-ctas]');
   const cue = q('.hero__cue');
   const grooves = [...hero.querySelectorAll('[data-groove]')];
@@ -86,7 +87,7 @@ export function initHero() {
   const coffee = document.querySelector('[data-coffee]');
   const slots = coffee ? [...coffee.querySelectorAll('[data-slot]')] : [];
 
-  const grooveD = smoothPath(MACRO.groove);
+  const grooveD = smoothPath(BEAN.groove);
   grooves.forEach((p) => p.setAttribute('d', grooveD));
   const grooveLen = grooves[0].getTotalLength();
   grooves.forEach((p) => { p.style.strokeDasharray = `${grooveLen} ${grooveLen}`; });
@@ -121,7 +122,7 @@ export function initHero() {
     if (mode === 'static') {
       hero.removeAttribute('data-mode');
       hero.classList.remove('is-js');
-      for (const el of [ap1, ap1In, ap2, ap2In, world.dark, world.blue, world.photo, world.espresso, ...copies, ...Object.values(plate)]) el.removeAttribute('style');
+      for (const el of [ap, apIn, copy, ctas, ...Object.values(world), ...Object.values(plate)]) el.removeAttribute('style');
       stage.removeAttribute('data-progress');
       dock.style.visibility = 'hidden';
       coffee?.classList.remove('is-docking');
@@ -130,41 +131,42 @@ export function initHero() {
     }
     hero.dataset.mode = mode;
     hero.classList.add('is-js');
-    world.blue.style.visibility = mode === 'full' ? '' : 'hidden';
   }
 
   function measure() {
+    // reset per-frame styles so the copy is measured in its resting place
+    copy.style.opacity = '';
     const W = stage.clientWidth, H = stage.clientHeight;
     const portrait = portraitMQ.matches;
     const g = { W, H, portrait };
+    const st = stage.getBoundingClientRect();
+    const B = BEAN.bounds;
+    const bc = { x: B.x + B.w / 2, y: B.y + B.h / 2 };
 
-    // Macro bean, cover; E1 = the point of the crease nearest the target.
-    // Portrait: zoom past cover so the crease runs below the copy and CTAs.
-    g.macro = portrait ? placeAt(MACRO.w, MACRO.h, W, H, 1.4, [1350, 543], { x: 0.55 * W, y: 0.8 * H }) : cover(MACRO.w, MACRO.h, W, H, 1, 0.5);
-    const tgt = mode === 'full' ? { x: 0.68 * W, y: 0.48 * H } : portrait ? { x: 0.5 * W, y: 0.8 * H } : { x: 0.68 * W, y: 0.55 * H };
-    let best = null;
-    for (let i = 0; i <= 200; i++) {
-      const pt = grooves[0].getPointAtLength((grooveLen * i) / 200);
-      const s = toScreen(g.macro, pt.x, pt.y);
-      const dd = (s.x - tgt.x) ** 2 + (s.y - tgt.y) ** 2;
-      if (s.x > 12 && s.x < W - 12 && s.y > 12 && s.y < H - 12 && (!best || dd < best.dd)) best = { ...s, dd, l: (grooveLen * i) / 200 };
+    // Cut-out bean on the blue, never scaled past ~0.75× its own pixels at rest.
+    let s, C;
+    if (portrait) {
+      // below the call-to-action buttons; up to ~18% may bleed off the bottom
+      const top = ctas.getBoundingClientRect().bottom - st.top + 28;
+      s = Math.min(Math.max(H - top, 0.3 * H) / (B.h * 0.82), (0.8 * W) / B.w);
+      C = { x: 0.5 * W, y: top + (B.h * s) / 2 };
+    } else {
+      // to the right of the copy
+      const textRight = Math.max(...[...copy.children].map((c) => c.getBoundingClientRect().right)) - st.left;
+      s = Math.min((0.66 * H) / B.h, (0.42 * W) / B.w, (W - textRight - 56) / B.w);
+      C = { x: Math.min((textRight + W) / 2 + 0.02 * W, W - (B.w * s) / 2 - 0.04 * W), y: 0.53 * H };
     }
-    best ??= { x: tgt.x, y: tgt.y, l: grooveLen / 2 };
-    g.E1 = { x: best.x, y: best.y };
-    const a = grooves[0].getPointAtLength(Math.max(0, best.l - 120));
-    const b = grooves[0].getPointAtLength(Math.min(grooveLen, best.l + 120));
-    g.ang1 = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI;
-    g.k1 = 0.62;
-    g.ap1Max = coverRadius(g.E1, g.ang1, g.k1, W, H);
-    g.ap1Slit = 150 * g.macro.s;
+    s = Math.min(s, 0.75);
+    g.bean = { s, x: C.x - bc.x * s, y: C.y - bc.y * s };
+    plate.bean.style.width = `${BEAN.w}px`;
+    plate.bean.style.height = `${BEAN.h}px`;
 
-    // Blue bean: crease centre on E1 (match cut on the shared crease).
-    const sB = Math.min((0.62 * H) / BEAN.bounds.h, (0.4 * W) / BEAN.bounds.w);
-    g.bean = { s: sB, x: g.E1.x - BEAN.groove.cx * sB, y: g.E1.y - BEAN.groove.cy * sB };
-    g.ang2 = BEAN.groove.angle;
-    g.k2 = 0.6;
-    g.ap2Max = coverRadius(g.E1, g.ang2, g.k2, W, H);
-    g.ap2Slit = (BEAN.groove.length / 2) * sB * 0.9;
+    // Aperture: centred on the crease, along its angle.
+    g.E = toScreen(g.bean, BEAN.centre.x, BEAN.centre.y);
+    g.ang = BEAN.angle;
+    g.k = 0.62;
+    g.apMax = coverRadius(g.E, g.ang, g.k, W, H);
+    g.apSlit = (BEAN.length / 2) * s * 0.92;
 
     // Photo (art-directed source follows the same aspect query as <picture>).
     g.pg = portrait ? PHOTO.mobile : PHOTO.desktop;
@@ -173,9 +175,8 @@ export function initHero() {
       ? cover(g.pg.w, g.pg.h, W, H, 0.78, 0.5)
       : placeAt(g.pg.w, g.pg.h, W, H, 1, [g.pg.crema.cx, g.pg.crema.cy], { x: 0.7 * W, y: 0.4 * H });
     g.photoPivot = toScreen(g.photo, g.pg.crema.cx, g.pg.crema.cy);
-    plate.macro.style.width = `${MACRO.w}px`; plate.macro.style.height = `${MACRO.h}px`;
-    plate.bean.style.width = `${BEAN.w}px`; plate.bean.style.height = `${BEAN.h}px`;
-    plate.photo.style.width = `${g.pg.w}px`; plate.photo.style.height = `${g.pg.h}px`;
+    plate.photo.style.width = `${g.pg.w}px`;
+    plate.photo.style.height = `${g.pg.h}px`;
 
     // Espresso disc grows out of the crema (screen coords at photo zoom 1).
     g.crema = { ...toScreen(g.photo, g.pg.crema.cx, g.pg.crema.cy), rx: g.pg.crema.rx * g.photo.s, ry: g.pg.crema.ry * g.photo.s };
@@ -188,18 +189,17 @@ export function initHero() {
     g.release = g.trackTop + g.scrollLen;
     if (mode === 'full') {
       const coffeeTop = coffee.getBoundingClientRect().top + sy;
-      const rects = slots.map((s) => s.getBoundingClientRect());
+      const rects = slots.map((el) => el.getBoundingClientRect());
       const artH = rects[0].height;
       const navBottom = nav ? nav.getBoundingClientRect().bottom : 80;
       const pTop = rects[0].top + sy - coffeeTop;
-      const Ty = clamp(Math.round((H - artH) / 2 - H * 0.05), navBottom + 24, Math.max(navBottom + 24, H - artH - 24));
+      const Ty = clamp((H - artH) / 2 - H * 0.05, navBottom + 24, Math.max(navBottom + 24, H - artH - 24));
       g.dockEnd = coffeeTop + pTop - Ty;
       g.slots = rects.map((r) => ({ x: r.left, y: r.top + sy - g.dockEnd, w: r.width, h: r.height }));
       dockItems.forEach((el, i) => { el.style.width = `${g.slots[i].w}px`; });
       const spt = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
       // may be negative: anchors must land at the dock end, never before it
       coffee.style.scrollMarginTop = `${Math.ceil(Ty - pTop - spt)}px`;
-      g.coffeeTop = coffeeTop;
       stage.dataset.dockEnd = String(Math.ceil(g.dockEnd));
     } else if (coffee) {
       coffee.style.scrollMarginTop = '';
@@ -207,7 +207,7 @@ export function initHero() {
     G = g;
   }
 
-  function setAperture(ap, apIn, C, deg, rx, k) {
+  function setAperture(C, deg, rx, k) {
     if (rx === Infinity) {
       ap.style.clipPath = 'none'; ap.style.transform = 'none'; apIn.style.transform = 'none';
       return;
@@ -232,8 +232,9 @@ export function initHero() {
     const g = G;
     stage.dataset.progress = p.toFixed(3);
 
-    // --- bean: macro zoom + light along the crease
-    setPlate(plate.macro, zoomAt(g.macro, keys(p, T.macroZoom), g.E1));
+    // --- the bean: slow push in, light runs along the crease
+    const z = keys(p, T.beanZoom);
+    setPlate(plate.bean, zoomAt(g.bean, z, g.E));
     const tl = easeIO(map(p, T.line));
     grooves.forEach((el) => { el.style.strokeDashoffset = `${grooveLen * (1 - tl)}`; });
     const head = grooves[0].getPointAtLength(grooveLen * tl);
@@ -242,39 +243,30 @@ export function initHero() {
     spark.style.opacity = `${tl > 0 && tl < 1 ? 1 : tl >= 1 ? clamp(1 - (p - T.line[1]) / 0.05) : 0}`;
     if (cue) cue.style.opacity = `${1 - map(p, [0, 0.06])}`;
 
-    // --- aperture 1 (macro crease → next world)
-    const t1 = map(p, T.ap1);
-    const r1 = apertureRadius(t1, g.ap1Slit, g.ap1Max);
-    setAperture(ap1, ap1In, g.E1, g.ang1, r1.rx, Math.min(g.k1, r1.k));
-    world.dark.style.visibility = t1 >= 1 ? 'hidden' : 'visible';
-
-    if (mode === 'full') {
-      // --- blue bean, then aperture 2 along its crease
-      setPlate(plate.bean, zoomAt(g.bean, keys(p, T.beanZoom), g.E1));
-      plate.bean.style.opacity = `${1 - map(p, T.beanFade)}`;
-      const t2 = map(p, T.ap2);
-      const r2 = apertureRadius(t2, g.ap2Slit, g.ap2Max);
-      setAperture(ap2, ap2In, g.E1, g.ang2, r2.rx, Math.min(g.k2, r2.k));
-      world.blue.style.visibility = t2 >= 1 ? 'hidden' : 'visible';
-    } else {
-      setAperture(ap2, ap2In, g.E1, 0, Infinity, 1);
-    }
+    // --- aperture: the crease opens onto the cup
+    const t = map(p, T.ap);
+    const r = apertureRadius(t, g.apSlit * z, g.apMax);
+    setAperture(g.E, g.ang, r.rx, Math.min(g.k, r.k));
+    world.blue.style.visibility = t >= 1 ? 'hidden' : 'visible';
 
     // --- cup: the window opens onto the latte art (crema starts on the
     // crease), then the photo settles into its resting framing.
-    const apR = mode === 'full' ? T.ap2 : T.ap1;
-    const settle = 1 - easeIO(map(p, [apR[0], apR[1] + 0.08]));
+    const settle = 1 - easeIO(map(p, [T.ap[0], T.ap[1] + T.settle]));
     const ph = zoomAt(g.photo, keys(p, T.photoZoom), g.photoPivot);
-    // keep the plate covering the stage while it travels
-    ph.x = clamp(ph.x + (g.E1.x - g.photoPivot.x) * settle, g.W - g.pg.w * ph.s, 0);
-    ph.y = clamp(ph.y + (g.E1.y - g.photoPivot.y) * settle, g.H - g.pg.h * ph.s, 0);
+    const fx = ph.x + (g.E.x - g.photoPivot.x) * settle;
+    const fy = ph.y + (g.E.y - g.photoPivot.y) * settle;
+    // While the window is a slit the photo may sit anywhere; as it grows to
+    // fill the screen the plate is pulled back inside full coverage.
+    const cov = easeIO(map(t, [0.35, 0.95]));
+    ph.x = lerp(fx, clamp(fx, g.W - g.pg.w * ph.s, 0), cov);
+    ph.y = lerp(fy, clamp(fy, g.H - g.pg.h * ph.s, 0), cov);
     setPlate(plate.photo, ph);
 
     if (mode !== 'full') return;
 
     // --- copy hands over
     const c = 1 - map(p, T.copyFade);
-    copies.forEach((el) => { el.style.opacity = `${c}`; });
+    copy.style.opacity = `${c}`;
     ctas.style.visibility = c < 0.04 ? 'hidden' : 'visible';
 
     // --- espresso disc out of the crema

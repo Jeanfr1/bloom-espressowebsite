@@ -55,38 +55,6 @@
       ]
     ]
   },
-  "macro": {
-    "width": 1672,
-    "height": 941,
-    "avif": [
-      [
-        "/img/macro-800-v1.avif",
-        800
-      ],
-      [
-        "/img/macro-1200-v1.avif",
-        1200
-      ],
-      [
-        "/img/macro-1672-v1.avif",
-        1672
-      ]
-    ],
-    "webp": [
-      [
-        "/img/macro-800-v1.webp",
-        800
-      ],
-      [
-        "/img/macro-1200-v1.webp",
-        1200
-      ],
-      [
-        "/img/macro-1672-v1.webp",
-        1672
-      ]
-    ]
-  },
   "bean": {
     "width": 1536,
     "height": 1024,
