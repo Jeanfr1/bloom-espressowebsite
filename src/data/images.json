@@ -215,30 +215,6 @@
       ]
     ]
   },
-  "facadeOriginal": {
-    "width": 816,
-    "height": 902,
-    "avif": [
-      [
-        "/img/facade-original-400-v1.avif",
-        400
-      ],
-      [
-        "/img/facade-original-816-v1.avif",
-        816
-      ]
-    ],
-    "webp": [
-      [
-        "/img/facade-original-400-v1.webp",
-        400
-      ],
-      [
-        "/img/facade-original-816-v1.webp",
-        816
-      ]
-    ]
-  },
   "logo": {
     "width": 1194,
     "height": 510,

@@ -131,11 +131,7 @@
 .address { display: flex; gap: 12px; align-items: flex-start; font-size: 18px; font-weight: 600; margin-bottom: 18px; }
 .address svg { width: 22px; height: 22px; flex: none; margin-top: 2px; fill: none; stroke: var(--burgundy); stroke-width: 1.7; }
 .corner__text .lead { max-width: 36ch; margin-bottom: 30px; color: #2F1F19; }
-.corner__photo img { width: 100%; border-radius: var(--radius); aspect-ratio: 1116 / 1410; object-fit: cover; }
-.corner__photo > picture img { box-shadow: 0 40px 80px -50px rgba(23, 53, 72, .8); }
-.corner__caption { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 16px; font-size: 14px; color: #3E2A24; }
-.corner__original { display: flex; align-items: center; gap: 10px; flex: none; font-weight: 600; }
-.corner__thumb img { width: 64px; aspect-ratio: 816 / 902; border-radius: 10px; box-shadow: none; }
+.corner__photo img { width: 100%; border-radius: var(--radius); aspect-ratio: 1116 / 1410; object-fit: cover; box-shadow: 0 40px 80px -50px rgba(23, 53, 72, .8); }
 @media (min-width: 960px) {
   .corner__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
   .corner__text { grid-column: 1 / 6; }
@@ -172,8 +168,6 @@
 .footer__links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
 .footer__links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 999px; text-decoration: none; font-weight: 500; }
 .footer__links a:hover { background: rgba(81, 33, 31, .07); }
-.footer__note { font-size: 13px; color: var(--ink-soft); max-width: 70ch; }
 @media (min-width: 960px) {
   .footer__grid { grid-template-columns: auto 1fr auto; column-gap: 40px; }
-  .footer__note { grid-column: 1 / -1; }
-}
+  }

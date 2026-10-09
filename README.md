@@ -32,7 +32,7 @@ From there the page stays simple and useful: the coffee, the menu, the food, ret
 
 - **Cinematic first impression**: a scroll-scrubbed 2D film made of real photos, a cut-out bean and measured masks, not a video
 - **Useful straight away**: headline, *View current menu* and *Get directions* are live from the first frame; nothing blocks the page
-- **Honest content**: names, address, email and hours come from Bloom's own pages; no prices, ratings, stock or phone numbers are invented
+- **Honest content**: names, address, email and hours come from Bloom's own pages; no prices, ratings, stock or phone numbers are invented, and production notes from the kit stay out of the page
 - **Light**: first load is about **220 KB on a phone** and **285 KB on desktop**, fonts included
 
 <br />
@@ -83,9 +83,9 @@ On desktop the hero is a 220svh track with a sticky stage (1.2 screens of scroll
 | 03  | **Find your morning.**               | `#menu`   | Menu categories and drink names from Bloom's menu; every *View current menu* button lands here |
 | 04  | **Something good on the side.**      | `#food`   | Food names from the menu; availability and dietary info at the counter                        |
 | 05  | **Bring a little Bloom home.**       | `#retail` | Retail coffee and gift cards, with an email CTA, over a field of honey-wood beans             |
-| 06  | **Our corner of Pimlico.**           | `#corner` | Address, the shopfront photo with its unedited original beside it, directions                 |
+| 06  | **Our corner of Pimlico.**           | `#corner` | Address, the shopfront photo and *Get directions*                                             |
 | 07  | **See you in the morning.**          | `#visit`  | Hours and email; a caramel line runs from the cup to *Get directions*                         |
-| 08  | Footer                               | n/a       | Logo, Menu · Directions · Email, a note that campaign photos are conceptual                  |
+| 08  | Footer                               | n/a       | Logo, Menu · Directions · Email                                                               |
 
 <br />
 
@@ -107,11 +107,10 @@ On desktop the hero is a 220svh track with a sticky stage (1.2 screens of scroll
 ## ✨ Highlights
 
 - **🎞️ Scroll storytelling**: a small custom engine (no animation library) maps scroll progress to the kit's timeline in `src/data/timeline.js`
-- **☕ Drink diagrams as real UI**: SVG cups with separate liquid layers that lift apart on hover, focus or tap, labelled in HTML and clearly marked as illustrative, not Bloom's recipes
+- **☕ Drink diagrams as real UI**: SVG cups with separate liquid layers that lift apart on hover, focus or tap, labelled in HTML
 - **🧾 Facts in one file**: address, hours, email and links live in `src/data/site.js` and are written into the HTML at build time, so they work without JavaScript
 - **🖼️ Image pipeline**: kit PNGs stay untouched; `npm run images` exports AVIF + WebP per width, the Open Graph card and the icons; the hero bean is preloaded
 - **🔤 Fonts trimmed**: Fraunces instanced and subset from 264 KB to 67 KB (`scripts/subset-fonts.py`), Inter self-hosted
-- **🧭 Honest location**: the shopfront photo is shown with its unedited original next to it, as the kit asks
 - **🔎 Ready to share**: Open Graph image and `CafeOrCoffeeShop` structured data with opening hours
 
 <br />
@@ -197,7 +196,7 @@ bloom-espressowebsite/
 │   └── fonts/                  # Trimmed Fraunces (generated)
 ├── scripts/
 │   ├── build-images.mjs        # PNG → AVIF/WebP, OG card, icons (sharp)
-│   ├── prepare-sources.mjs     # Trimmed logo and the original shopfront photo → assets-src/
+│   ├── prepare-sources.mjs     # Trimmed logo → assets-src/
 │   └── subset-fonts.py         # Fraunces instancing and subsetting (fonttools)
 ├── public/                     # Generated images, favicon, Open Graph card
 ├── 01-identidade … 08-estudo/  # The creative kit (kept in the repo, excluded from the deploy)
@@ -229,7 +228,7 @@ Items waiting on Bloom. Each code item is marked `TODO(bloom)`.
 - [ ] **Bloom's website is down**: bloomespresso.com.au answered 404 on 2026-10-09. *View current menu* scrolls to the on-page menu and price / gift-card questions go to the email. When the site or its order page is back and tested, point those buttons at it again
 - [ ] The Google Maps place link for the shop (directions currently search the address)
 - [ ] Official logo files (the current logo is a reconstruction of the lettering from Bloom's profile)
-- [ ] The original shopfront photo file, to replace the edited version
+- [ ] The original shopfront photo file (the site uses the kit's edited version)
 - [ ] Confirm the campaign photos (latte, food, iced latte) are acceptable as conceptual images
 - [ ] Final domain, then add `canonical` / `og:url` and remove `noindex`
 

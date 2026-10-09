@@ -21,7 +21,6 @@ const SOURCES = {
   food: { src: '04-secoes/food-morning.png', widths: [700, 1100, 1536] },
   iced: { src: '04-secoes/iced-latte.png', widths: [700, 1100, 1536] },
   facade: { src: '04-secoes/facade-edited.png', widths: [560, 840, 1116] },
-  facadeOriginal: { src: 'assets-src/facade-original.png', widths: [400, 816] },
 };
 
 const manifest = {};
